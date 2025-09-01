@@ -40,7 +40,7 @@ trainer.train(10000, show_final_path=True, show_table=False, show_graphs=True)
   ```bash
   git clone https://github.com/SamS709/reinforcement_learning_series.git rl_scripts
   ```
-32. Run the training script:
+3. Run the training script:
   ```bash
   cd rl_scripts
   python 1/Trainer.py
@@ -53,4 +53,4 @@ The Q-table is visualized after training using a custom plotting function. Posit
 
 ### Example Q-table Visualization
 
-![Q-table visualization](github/1/images/q_table.png)
+<img src="1/images/q_table.png" alt="Q-table visualization" width="500"/>
