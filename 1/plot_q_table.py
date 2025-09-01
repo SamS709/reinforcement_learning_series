@@ -52,6 +52,7 @@ def plot_q_table(q_table, grid_shape, action_order=['up', 'down', 'left', 'right
     ax.axis('off')
     plt.tight_layout()
 
+
 # Example usage:
 # q_table = np.random.rand(16, 4)  # for a 4x4 grid
 # plot_q_table(q_table, (4, 4))
