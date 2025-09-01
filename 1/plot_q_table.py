@@ -2,17 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon, Rectangle
 
-def plot_q_table(q_table, grid_shape, action_order=['up', 'down', 'left', 'right'], cmap='coolwarm'):
-    """
-    Plots the Q-table for a gridworld environment.
-    Each state is a square, with 4 triangles (actions) around it colored by Q-value.
-    
-    Args:
-        q_table: numpy array of shape (num_states, 4)
-        grid_shape: (rows, cols) tuple
-        action_order: order of actions in q_table columns
-        cmap: matplotlib colormap name
-    """
+def plot_q_table(q_table, grid_shape, action_order=['up', 'down', 'left', 'right'], cmap='coolwarm', L_holes = [], final_path = []):
     rows, cols = grid_shape
     assert q_table.shape == (rows, cols, 4), f"Q-table shape must be (rows, cols, 4), got {q_table.shape}"
 
@@ -30,7 +20,13 @@ def plot_q_table(q_table, grid_shape, action_order=['up', 'down', 'left', 'right
     for r in range(rows):
         for c in range(cols):
             # Draw the square for the state
-            rect = Rectangle((c, r), 1, 1, edgecolor='black', facecolor='white', lw=1)
+            if [r,c] in final_path:
+                color = 'lightgrey'
+            elif [r,c] in L_holes:
+                color = 'plum'
+            else:
+                color = 'white'
+            rect = Rectangle((c, r), 1, 1, edgecolor='black', facecolor=color, lw=1)
             ax.add_patch(rect)
             # Center of the square
             cx, cy = c + 0.5, r + 0.5
@@ -51,7 +47,7 @@ def plot_q_table(q_table, grid_shape, action_order=['up', 'down', 'left', 'right
                 # Move Q-value text a bit towards the center
                 tip = np.array(triangles[action][2])
                 center = np.array([cx, cy])
-                text_pos = center + 0.6 * (tip - center)  # 0.6 instead of 1.0
+                text_pos = center + 0.6 * (tip - center)  
                 ax.text(text_pos[0], text_pos[1], f"{q:.2f}", ha='center', va='center', fontsize=7, color='black')
     ax.axis('off')
     plt.tight_layout()
