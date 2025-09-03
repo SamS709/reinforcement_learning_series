@@ -110,6 +110,9 @@ class Env:
         # change the current state of the environnement
         self.state = next_state.copy()
         return next_state, reward, terminated
+    
+    def render(self):
+        print(self.state)
 
 
 if __name__ == "__main__":

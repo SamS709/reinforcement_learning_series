@@ -13,7 +13,7 @@ The `Env` class is defined in this file. It describes the environment in which t
 ```python
 from Env import Env
 
-env = Env(n=5, p=5, borders=True, holes=True, final_state=[n,p], L_holes=[[1, 1]])
+env = Env(n=5, p=5, borders=True, holes=True, final_state=[5,5], L_holes=[[1, 1]])
 state = env.reset() # returns [0,0]
 action = 1 # go down (will be deterined by the agent: )
 next_state, reward, terminated = env.step(1)
@@ -23,22 +23,24 @@ print(next_state) #output : [1,0]
 ### Main Functions in Env and Trainer Classes
 
 #### Env class (in `Env.py`):
-- `__init__`: Initializes the environment with grid size, borders, holes, final state, and hole locations.
-- `reset`: Resets the environment to the initial state and returns it.
-- `step(action)`: Takes an action, updates the state, and returns the next state, reward, and whether the episode is terminated.
-- `render`: (If present) Visualizes or prints the current state of the environment.
-- `reward_grid` (attribute): The grid showing rewards for each tuple (state,action) such that r(s,a) = reward_grid[state[0],state[1],action].
 
+- `reset`: Resets the environment to the initial state and returns it.
+
+- `step(action)`: Takes an action, updates the state, and returns the next state, reward, and whether the episode is terminated.
+
+- `render`: (If present) Visualizes or prints the current state of the environment.
+
+- `reward_grid` (attribute): The grid showing rewards for each tuple (state,action) such that r(s,a) = reward_grid[state[0],state[1],action].
 
 
 ## Agent.py
 
-The `Trainer` class handles the Q-learning algorithm, training, and policy.
+The `Agent` class handles the training, based on epsilon greedy policy and the Bellmann equation.
 
 ```python
 from Agent import Agent
 
-agent = Agent(5, 5, borders=True, holes=True, final_state=None, L_holes=[[1, 1]])
+agent = Agent(5, 5, borders=True, holes=True, final_state=[5,5], L_holes=[[1, 1]])
 agent.train(10000, show_table=False, show_graphs=True)
 ```
 
