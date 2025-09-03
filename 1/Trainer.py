@@ -3,7 +3,7 @@ import time
 import matplotlib.pyplot as plt
 from plot_q_table import plot_q_table
 
-class Trainer:
+class Agent:
 
     def __init__(self,n,p,borders = False,holes = True, final_state = None,L_holes = [], learning_rate = 0.1, discount_factor = 0.98):
 
@@ -93,7 +93,7 @@ class Trainer:
 
 
 
-    def train(self, n_epochs: int, show_final_path: bool = False, show_table: bool = False, show_graphs: bool = False) -> None:
+    def train(self, n_epochs: int, show_table: bool = False, show_graphs: bool = False) -> None:
         """
         Trains the agent for a given number of epochs.
 
@@ -127,11 +127,7 @@ class Trainer:
                 print("="*80)
                 time.sleep(0.001)
 
-        
-            
-        if show_final_path:
-            best_path = self.best_path()
-            print(best_path)
+
 
         if show_graphs:
             chunk_size = 100
@@ -169,5 +165,5 @@ class Trainer:
 
 if __name__=="__main__":
     L_wholes = [[1,0],[1,1]]
-    trainer = Trainer(5,5,borders = True,holes=True,final_state=None,L_holes=L_wholes)
-    trainer.train(10000,show_final_path=True,show_table = False, show_graphs = True)
+    agent = Agent(5,5,borders = True,holes=True,final_state=None,L_holes=L_wholes)
+    agent.train(10000,show_table = False, show_graphs = True)
