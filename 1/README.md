@@ -1,6 +1,7 @@
 # 1. Q-learning: How Does It Work?
 
 If you want to deeply understand how Q-learning works, you are at the right place: there is nothing better than getting hands-on to learn.
+But before, I advise you to watch my video explaining how q learning works at : 
 
 There are two important files:
 - `Env.py`
