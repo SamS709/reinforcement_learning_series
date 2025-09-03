@@ -27,7 +27,7 @@ print(next_state) #output : [1,0]
 - `reset`: Resets the environment to the initial state and returns it.
 - `step(action)`: Takes an action, updates the state, and returns the next state, reward, and whether the episode is terminated.
 - `render`: (If present) Visualizes or prints the current state of the environment.
-- `reward_grid` (attribute): The grid showing rewards for each state.
+- `reward_grid` (attribute): The grid showing rewards for each tuple (state,action) such that r(s,a) = reward_grid[state[0],state[1],action].
 
 
 
@@ -51,8 +51,9 @@ Be careful, show_table will display the q_table in the terminal, but in order to
 
 - `update_q_table(state, action, reward, next_state)`: Updates the Q-table using the Bellmann equation.
 
-- `get_best_path`: (If present) Retrieves the best path found by the agent.
-- `plot_q_table`: (If present) Visualizes the Q-table.
+- `play_one_step()`: Execute a complete path of the agent from starting point to finish line.
+
+- `best_path(list: bool)`:  Retrieves the best path found by the agent (if list == True, it will return the list of the states visited by the agent, otherwise, the path in the grid).
 
 ## How to Run
 
