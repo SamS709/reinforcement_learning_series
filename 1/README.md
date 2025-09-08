@@ -3,6 +3,11 @@
 If you want to deeply understand how Q-learning works, you are at the right place: there is nothing better than getting hands-on to learn.
 But before, I advise you to watch my video explaining how q learning works at : 
 
+And my implementation of the q learning algorithm using python at :
+
+You will find 2 folders here:
+- `video_code, which code is explained in the implementation video above.`
+- `advanced_code, which is an evolution of this code with more features explained below`
 There are two important files:
 - `Env.py`
 - `Trainer.py`
